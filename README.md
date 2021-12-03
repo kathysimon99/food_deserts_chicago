@@ -71,7 +71,16 @@ The data used in this project consisted of food access, health, and grocery stor
 
 ___
 ### III. Modeling
-To identify the food access features most relevant to health disparities, we fit linear regression models to predict obesity and diabetes rates.  We first dropped all food access features with Null values so we would not need to exclude any census tracts.  We also excluded demographic data from this process.  We did not think that demographic information should be part of the food desert definition.  We used the remaining features to predict both obesity and diabetes rates.  We found  that our linear regression was able to perform better than baseline in predicting obesity and diabetes based on food access features.  We also found that poverty rate and food access within a half mile consistently performed as strong indicators in the regressions.
+To identify the food access features most relevant to health disparities, we fit linear regression models to predict obesity and diabetes rates.  We first dropped all food access features with Null values so we would not need to exclude any census tracts.  We also excluded demographic data from this process.  We did not think that demographic information should be part of the food desert definition.  We used the remaining features to predict both obesity and diabetes rates.  We found  that our linear regression was able to perform better than baseline in predicting obesity and diabetes based on food access features.  We also found that poverty rate and food access within a half mile consistently performed as strong indicators in the regressions.<br>
+<img src = "visuals/tract_half_grocery_locations_distance_atrisk.png" width= 600 alt="Chicago Census Tract by Distance from Nearest Grocery Store and Grocery Locations">
+
+--The color coding on this map shows the distance from each census tract to the nearest grocery store. The yellow points indicate grocery store locations. The numerical distance scale on the right is based on latitude and longitude, making it difficult to give an exact conversion to miles. However, based on the information here, we can say that dark blue tracts have a store in them, light blue have a store within about 1/3 mile, light red have a store within about 2/3 mile, and dark red have no store within about 2/3 mile.  The cross hatching shows areas of concern based on distance from the nearest store.
+
+<img src="visuals/obesity_atrisk.png" width = 600>
+
+--This map shows the obesity rates in each community area overlaying the census tract grid. The shaded census tracts show the areas of concern regarding low access to healthy food. Many of the areas of concern also have high obesity rates.<br>
+
+
 
 Based on this analysis, we designed a logistic regression model to predict whether a census tract had low food access based on income, vehicle access, SNAP participation, obesity rate, and diabetes rate.  We found that our model performed better than baseline at predicting low food access, with an accuracy of about 85%, precision of 83%, and recall of 65%.  This shows that such methods could be used to identify potential food deserts in need of intervention based on existing health, income, vehicle, and SNAP data.
 
