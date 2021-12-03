@@ -1,5 +1,5 @@
 <img src ='images/chicagoimg.jpg' width = 300>
--downtown Chicago
+-Downtown Chicago
 
 #  Food Deserts In Chicago
 ___
