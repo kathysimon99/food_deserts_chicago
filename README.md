@@ -22,7 +22,7 @@ ___
 ### I. Problem Statement
 ### II. Description of Data
 ### III. Modeling
-### IV. Summary
+### IV. Conclusion/Recommendation
 ___
 
 ### I. Problem Statement
@@ -32,14 +32,28 @@ ___
 One reason that so many people in the United States experience food insecurities is that access to healthy food is scarce. There are communities, called food deserts, that have limited access to healthy foods. Our goal is to provide access to healthy foods within these deserts by means of local markets or mobile food trucks.  We will identify food deserts in Chicago using a binary classification model. Once we have identified the food deserts, we will identify optimal locations to provide these neighborhoods with access to healthy foods.
 
 
-* need background information
+
 ___
 ### II. Description of Data
-* Need information about the data and links to where the original data can be found.
- 
-* Summary of what the data looks like including a few important visuals
+[List of grocery store locations in Chicago with latitudes and longitudes](https://data.cityofchicago.org/Community-Economic-Development/Business-Licenses-Current-Active/uupf-x98q/data)
 
-<img src = 'visuals/bar_pop_age_low_food_access.png'> 
+
+<a href = "https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2010.html">Shapefiles containing goegraphy of census tracts</a>
+
+<a href = "https://www.ers.usda.gov/data-products/food-access-research-atlas/download-the-data/">Food access data from U.S. Department of Agriculture</a>
+
+<a href= "http://robparal.blogspot.com/2015/03/equivalency-file-for-using-complete.html?q=chicago+community+areas">Data used to match Chicago census tracts to community areas</a>
+
+The data used in this project consisted of food access, health, and grocery store locations.  The food access data was from the U.S. Department of Agriculture.  Information on several factors associated with food deserts was included in this data on the level of census tracts.  The health data was from Chicago Health Atlas and was provided on the level of community area.  The grocery store locations in latitude and longitude were from the Chicago Open Data portal.  Additionally, shapefiles containing the boundaries of individual census tracts were used to display the data in GeoPandas, and a separate data set was used to match community areas to the census tracts within them.
+
+
+
+<img src = 'visuals/bar_pop_age_low_food_access.png'>
+-This bar graph shows 1/3 of children ages 17 and younger have access to healthy foods, and about 1/3 of adults aged 65 and older have access to healthy foods. 
+
+
+
+<img src="visuals/hist_obesity_low_income.png"> -This histogram shows hows obesity percentage in Chicago affects low income residents.
 
 [link to data dictionary for original low access data](./data/food_data_dictionary.csv)
 
@@ -54,11 +68,35 @@ ___
 | HCSOBP_2016-2018 | float |[food_obesity.csv](./data/food_obesity.csv) | Percentage of obesity in tract |
 | HCSDIAP_2016-2018 | float |[food_diabetes.csv](./data/food_diabetes.csv)  | Percentage of diabetes in tract
 
+
 ___
 ### III. Modeling
+To identify the food access features most relevant to health disparities, we fit linear regression models to predict obesity and diabetes rates.  We first dropped all food access features with Null values so we would not need to exclude any census tracts.  We also excluded demographic data from this process.  We did not think that demographic information should be part of the food desert definition.  We used the remaining features to predict both obesity and diabetes rates.  We found  that our linear regression was able to perform better than baseline in predicting obesity and diabetes based on food access features.  We also found that poverty rate and food access within a half mile consistently performed as strong indicators in the regressions.
 
+Based on this analysis, we designed a logistic regression model to predict whether a census tract had low food access based on income, vehicle access, SNAP participation, obesity rate, and diabetes rate.  We found that our model performed better than baseline at predicting low food access, with an accuracy of about 85%, precision of 83%, and recall of 65%.  This shows that such methods could be used to identify potential food deserts in need of intervention based on existing health, income, vehicle, and SNAP data.
 
 ___
-### IV. Summary
+### IV. Conclusion/Recommendation
+Problems in Chicago's food deserts are multilayered, with no quick fix. We looked at Chicago's obesity and diabetes rates
+and mapped out the the Census Tract areas. From there we identified the highest problem areas throughout the Chicago region. We recommend the following 3 actions:
+
+<ol><li> Investigate other factors in the modeling process<br>
+   <ol> a.) Cardiovascular Disease<br> 
+    b.) Education outcomes<br>
+    c.) Access to healthcare
+   </ol> 
+<li> Take a behavioral approach to understanding residents in Chicago food deserts<br>
+<ol>a.) See if time  is an issue for residents, making it difficult to fix healthy meals each day?<br>
+b.) See if economic status has an influence on buying habits<br>
+c.) How can we encourage residents in chicago food deserts to change
+    these habits of when more healthy foods become available?</ol>
+<li> Chicago should continue to invest in and support small businesses like <a href="https://urbangrowerscollective.org/freshmoves/" target="_blank">The Fresh Food Mobile Market</a>.
+ <ol>a.) Encourages residents to learn about growing and cooking different foods <br>
+ b.) They serve affordable ‘healthy foods’ and travel to areas such as schools, churches and clinics to provide easy access<br>
+ c.) Local farms are being built outside of Chicago
+
+
+
+    
 
 
